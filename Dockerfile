@@ -7,8 +7,9 @@ RUN wget -q -O - https://archive.kali.org/archive-key.asc  | apt-key add -
 RUN echo "deb http://http.kali.org/kali kali-rolling main contrib non-free" >> /etc/apt/sources.list
 RUN apt-get update
 
-RUN apt-get install -y python3 python3-pip git seclists curl dnsrecon enum4linux feroxbuster gobuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf
+RUN apt-get install -y python3 python3-pip git curl dnsrecon enum4linux feroxbuster gobuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf
 RUN python3 -m pip install git+https://github.com/Tib3rius/AutoRecon.git
 
+RUN tar -xf /usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt.tar.gz  -C /usr/share/seclists/Passwords/Leaked-Databases
 
 CMD ["/bin/bash"]
